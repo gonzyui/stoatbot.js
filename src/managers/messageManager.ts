@@ -250,10 +250,14 @@ export class MessageManager extends BaseManager<MessageStruct, APIMessage> {
 
     if (typeof query === "number") query = { limit: query };
     else if (typeof query === "undefined") query = { limit: 100 };
-
+    const queryObj = Object.fromEntries(
+      Object.entries(query as MessageQueryOptions).filter(
+        ([, v]) => v !== undefined,
+      ),
+    ) as Record<string, string | number>;
     const messages = await this.client.api.get(
       `/channels/${this.channel.id}/messages`,
-      { query: JSON.stringify(query as Required<MessageQueryOptions>) },
+      queryObj,
     );
 
     return (messages as APIMessage[]).reduce((coll, cur) => {
