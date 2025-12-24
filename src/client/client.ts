@@ -41,6 +41,12 @@ export class client extends BaseClient {
    * @private
    */
   async init(): Promise<void> {
+    this.debug("Initializing client...");
+    if (process.env.NODE_ENV === "DEV") {
+      console.info(
+        "Development mode enabled: displaying additional debug info.",
+      );
+    }
     await this.api.getConfig();
   }
 
