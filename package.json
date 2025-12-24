@@ -15,6 +15,8 @@
   "keywords": [
     "revoltjs",
     "revolt.js",
+    "stoatjs",
+    "stoat.js",
     "bot",
     "client",
     "stoatbot",
@@ -50,7 +52,7 @@
     "lint": "eslint . --ext .ts --fix",
     "build": "yarn clean && yarn tsup ./src/index.ts --format cjs,esm --clean --dts --sourcemap",
     "start": "yarn build && yarn node --enable-source-maps dist/index.js",
-    "testClient": "yarn test:build && cross-env NODE_ENV=test yarn node --enable-source-maps dist/test.js",
+    "testClient": "yarn test:build && cross-env NODE_ENV=DEV yarn node --enable-source-maps dist/test.js",
     "clean": "rimraf dist",
     "test:docs": "rimraf docs && yarn typedoc --options static/typedoc.json",
     "test:build": "yarn clean && tsc -p tsconfig.json"

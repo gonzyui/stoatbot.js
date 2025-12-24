@@ -41,7 +41,12 @@ export class RestClient {
         },
         url: `${this.client.options.rest?.instanceURL ? this.client.options.rest?.instanceURL : apiUrl}${url}`,
       };
-
+      if (process.env.NODE_ENV === "DEV") {
+        console.info("Request Config:", config);
+        console.info("Request Body:", body);
+        console.info("Request Query:", query);
+        console.info("Request URL:", config.url);
+      }
       // Use the rate limit queue for all requests
       const response: AxiosResponse<T> =
         await this.rateLimitQueue.request<T>(config);
@@ -53,7 +58,7 @@ export class RestClient {
           return this.retryRequest<T>(0, method, url, body, query);
         }
         if (error.status) {
-          if (process.env.NODE_ENV === "test") {
+          if (process.env.NODE_ENV === "DEV") {
             console.error("Error details:", error);
             console.error("Error response data:", error.response?.data);
             console.error("Error request config:", error.config);
@@ -77,7 +82,6 @@ export class RestClient {
         `${this.client.options.rest?.instanceURL ? this.client.options.rest?.instanceURL : apiUrl}/`,
       );
       const config = response.data;
-
       this.client.options.rest = {
         ...this.client.options.rest,
         instanceCDNURL: config.features.autumn.url,

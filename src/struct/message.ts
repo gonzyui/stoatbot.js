@@ -208,7 +208,7 @@ export class MessageStruct extends Base {
    * @returns {string} The URL of the message.
    */
   get url(): string {
-    return `https://app.revolt.chat/${
+    return `https://app.stoat.chat/${
       this.serverId ? `server/${this.serverId}` : ""
     }/channel/${this.channelId}/${this.id}`;
   }
