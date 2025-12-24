@@ -10,6 +10,62 @@ export type CDNAttachmentResponse = {
 };
 
 /**
+ * Represents a webhook avatar attachment.
+ */
+export interface WebhookAvatar {
+  /** The unique identifier of the attachment. */
+  _id: string;
+  /** The tag associated with the attachment. */
+  tag: string;
+  /** The filename of the attachment. */
+  filename: string;
+  /** Additional metadata for the attachment. */
+  metadata: any;
+  /** The MIME type of the attachment. */
+  content_type: string;
+  /** The size of the attachment in bytes. */
+  size: number;
+}
+
+/**
+ * Represents data for a webhook creation event.
+ */
+export interface WebhookCreateData {
+  /** The unique identifier of the webhook. */
+  webhookId: string;
+  /** The ID of the channel the webhook belongs to. */
+  channelId: string;
+  /** The name of the webhook. */
+  name: string;
+  /** The ID of the user who created the webhook. */
+  creatorId: string;
+  /** The webhook's token. */
+  token: string;
+}
+
+/**
+ * Represents data for a webhook deletion event.
+ */
+export interface WebhookDeleteData {
+  /** The unique identifier of the webhook. */
+  webhookId: string;
+}
+
+/**
+ * Represents data for a webhook update event.
+ */
+export interface WebhookUpdateData {
+  /** The unique identifier of the webhook. */
+  webhookId: string;
+  /** The updated name of the webhook. */
+  name: string;
+  /** The updated avatar of the webhook, if any. */
+  avatar: WebhookAvatar | undefined;
+  /** Fields to remove from the webhook. */
+  remove: string[];
+}
+
+/**
  * Represents the permissions that can be set for a role.
  */
 export type editablePermissions = {

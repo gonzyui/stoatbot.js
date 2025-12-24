@@ -1,4 +1,5 @@
 import { Event, Events } from "./event";
+import { WebhookUpdateData } from "../../utils/types";
 
 /**
  * Represents the event handler for webhook updates.
@@ -8,7 +9,7 @@ import { Event, Events } from "./event";
 export class WebhookUpdate extends Event {
   /**
    * Handles the webhook update event.
-   * @param {id: string, data: { name: string; avatar?: { _id: string; tag: string; filename: string; metadata: any; content_type: string; size: number; }; remove: string[]; }} - The data for the event, containing the webhook ID and updated webhook data.
+   * @param {id: string, data: { name: string; avatar?: { _id: string; tag: string; filename: string; metadata: any; content_type: string; size: number; }; remove: string[]; }} data- The data for the event, containing the webhook ID and updated webhook data.
    * @returns {void}
    */
   handle(data: {
@@ -26,12 +27,13 @@ export class WebhookUpdate extends Event {
       remove: string[];
     };
   }): void {
-    this.client.emit(
-      Events.WEBHOOKS_UPDATE,
-      data.id,
-      data.data.name,
-      data.data.avatar,
-      data.data.remove,
-    );
+    const webhookData: WebhookUpdateData = {
+      webhookId: data.id,
+      name: data.data.name,
+      avatar: data.data.avatar,
+      remove: data.data.remove,
+    };
+
+    this.client.emit(Events.WEBHOOKS_UPDATE, webhookData);
   }
 }
