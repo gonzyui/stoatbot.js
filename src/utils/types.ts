@@ -1,5 +1,6 @@
 import { Role } from "revolt-api";
 import { FullPermissions } from "./permissions";
+import { Readable } from "stream";
 
 /**
  * Represents a response from the API when uploading an attachment.
@@ -117,4 +118,35 @@ export interface BuildInfo {
   semver: string;
   origin_url: string;
   timestamp: string;
+}
+
+export interface createWebhookResponse {
+  id: "string";
+  name: "string";
+  avatar: {
+    _id: "string";
+    tag: "string";
+    filename: "string";
+    metadata: {
+      type: "File";
+    };
+    content_type: "string";
+    size: 1;
+    deleted: null;
+    reported: null;
+    message_id: null;
+    user_id: null;
+    server_id: null;
+    object_id: null;
+  };
+  creator_id: "string";
+  channel_id: "string";
+  permissions: 0;
+  token: null;
+}
+
+export interface editWebhookOptions {
+  name: string;
+  avatar?: Readable | string | File;
+  remove?: [];
 }
