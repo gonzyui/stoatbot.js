@@ -6,6 +6,20 @@ import { AudioPlayer } from "../client/player";
 
 type APIVoiceChannel = Extract<Channel, { channel_type: "VoiceChannel" }>;
 
+export type Voice = {
+  id: string;
+  participants: voiceParticipant[];
+};
+
+export type voiceParticipant = {
+  id: string;
+  joined_at: string;
+  is_receving: boolean;
+  is_publishing: boolean;
+  screensharing: boolean;
+  camera: boolean;
+};
+
 /**
  * Represents a voice channel in a server.
  *
@@ -14,6 +28,7 @@ type APIVoiceChannel = Extract<Channel, { channel_type: "VoiceChannel" }>;
 export class VoiceChannel extends ServerChannel {
   /** The type of the channel, which is always `VOICE` for voice channels. */
   readonly type = ChannelTypes.VOICE;
+  voice?: Map<string, voiceParticipant> = new Map();
 
   /**
    * Creates a new VoiceChannel instance.

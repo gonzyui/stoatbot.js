@@ -36,6 +36,9 @@ export enum Events {
   WEBHOOKS_CREATE = "webhookCreate",
   WEBHOOKS_DELETE = "webhookDelete",
   WEBHOOKS_UPDATE = "webhookUpdate",
+  USER_VOICE_STATE_UPDATE = "userVoiceStateUpdate",
+  VOICE_CHANNEL_JOIN = "voiceChannelJoin",
+  VOICE_CHANNEL_LEAVE = "voiceChannelLeave",
 }
 
 /**
@@ -76,6 +79,9 @@ export enum WSEvents {
   WEBHOOKS_CREATE = "WebhooksCreate",
   WEBHOOKS_DELETE = "WebhooksDelete",
   WEBHOOKS_UPDATE = "WebhooksUpdate",
+  VOICE_STATE_UPDATE = "VoiceStateUpdate",
+  VOICE_CHANNEL_JOIN = "VoiceChannelJoin",
+  VOICE_CHANNEL_LEAVE = "VoiceChannelLeave",
 }
 
 /**

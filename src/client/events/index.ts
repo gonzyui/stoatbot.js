@@ -24,6 +24,9 @@ import { MessageUnreact } from "./messageUnreact";
 import { WebhookCreate } from "./webhookCreate";
 import { WebhookDelete } from "./webhookDelete";
 import { WebhookUpdate } from "./webhookUpdate";
+import { UserVoiceStateUpdate } from "./userVoiceStateUpdate";
+import { VoiceChannelJoin } from "./voiceChannelJoin";
+import { VoiceChannelLeave } from "./voiceChannelLeave";
 
 export const EventMap = {
   bulkMessageDelete: BulkMessageDelete,
@@ -51,4 +54,7 @@ export const EventMap = {
   webhookCreate: WebhookCreate,
   webhookDelete: WebhookDelete,
   webhookUpdate: WebhookUpdate,
+  userVoiceStateUpdate: UserVoiceStateUpdate,
+  voiceChannelJoin: VoiceChannelJoin,
+  voiceChannelLeave: VoiceChannelLeave,
 };

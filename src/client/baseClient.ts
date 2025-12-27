@@ -16,6 +16,12 @@ import {
   WebhookDeleteData,
   WebhookUpdateData,
 } from "../utils/types";
+import {
+  UserVoiceStateUpdate,
+  UserVoiceStateUpdateData,
+} from "./events/userVoiceStateUpdate";
+import { VoiceChannelJoinData } from "./events/voiceChannelJoin";
+import { VoiceChannelLeaveData } from "./events/voiceChannelLeave";
 
 /**
  * Represents the base client that provides core functionality for interacting with the API.
@@ -125,6 +131,12 @@ export interface ClientEvents {
   [Events.WEBHOOKS_DELETE]: [WebhookDeleteData];
   /** emitted when a webhook is updated */
   [Events.WEBHOOKS_UPDATE]: [WebhookUpdateData];
+  /** emitted when a user's voice state is updated */
+  [Events.USER_VOICE_STATE_UPDATE]: [UserVoiceStateUpdateData];
+  /** emitted when a user joins a voice channel */
+  [Events.VOICE_CHANNEL_JOIN]: [VoiceChannelJoinData];
+  /** emitted when a user leaves a voice channel */
+  [Events.VOICE_CHANNEL_LEAVE]: [VoiceChannelLeaveData];
 }
 
 /**

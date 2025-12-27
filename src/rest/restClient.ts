@@ -92,7 +92,6 @@ export class RestClient {
       this.client.voiceOptions = {
         ...config.features.livekit,
       };
-      console.log(this.client.voiceOptions);
     } catch (error) {
       console.error("Failed to fetch configuration:", error);
       process.exit(1);

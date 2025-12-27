@@ -5,6 +5,7 @@ import type {
   ServerChannel,
   TextChannel,
   VoiceChannel,
+  voiceParticipant,
 } from "./index";
 import { ChannelTypes, UUID } from "../utils/index";
 import { CreateChannelOptions } from "../managers/serverChannelManager";
@@ -32,7 +33,7 @@ import { Readable } from "stream";
  */
 export abstract class Channel extends Base {
   type: ChannelTypes | "UNKNOWN" = "UNKNOWN";
-  voice?: any = undefined;
+  voice?: Map<string, voiceParticipant> = new Map();
 
   /**
    * Gets the timestamp (in milliseconds) when the channel was created.

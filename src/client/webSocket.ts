@@ -244,6 +244,13 @@ export class WebSocketClient {
 
         await Promise.all(promises);
 
+        for (const voice_state of packet.voice_states) {
+          const channel = this.client.channels.cache.get(voice_state.id);
+          for (const participant of voice_state.participants) {
+            channel?.voice?.set(participant.id, participant);
+          }
+        }
+
         this.ready = true;
 
         this.client.emit(Events.READY, this.client);
