@@ -44,6 +44,12 @@ export class CDNClient {
         url: `${this.client.options.rest?.instanceCDNURL}${url}`,
       };
 
+      if (process.env.NODE_ENV === "DEV") {
+        console.info("Request Data:", data);
+        console.info("Request Query:", query);
+        console.info("Request URL:", config.url);
+      }
+
       // Use the rate limit queue for all requests
       const response: AxiosResponse<T> =
         await this.rateLimitQueue.request<T>(config);

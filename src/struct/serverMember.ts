@@ -283,4 +283,13 @@ export class ServerMember extends Base {
   toString(): string {
     return `<@${this.id}>`;
   }
+
+  /**
+   * Sets a timeout for the server member.
+   * @param duration - The duration of the timeout as a Date object.
+   * @returns A promise that resolves when the timeout is set.
+   */
+  timeout(duration: Date): Promise<void> {
+    return this.server.members.edit(this, { timeout: duration });
+  }
 }

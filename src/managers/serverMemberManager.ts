@@ -8,6 +8,7 @@ export interface EditServerMemberOptions {
   nickname?: string;
   avatar?: string;
   roles?: string[];
+  timeout?: Date | number;
 }
 
 export class ServerMemberManager extends BaseManager<ServerMember, Member> {
